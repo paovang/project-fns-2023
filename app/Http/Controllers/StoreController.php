@@ -82,26 +82,9 @@ class StoreController extends Controller
         $editStore->phone_number = $request->phone_number;
         $editStore->address = $request->address;
 
-        /** Save Image */
+        /** Save File Logo */
         if (isset($request['logo'])) {
-            $destination_path = '/images/Store/Logo'; // ສ້າງ ຫຼື ອ້າງ folder path
-            $imageFile = $request->file('logo'); 
-            // Get just ext
-            $extension = $imageFile->getClientOriginalExtension();
-            // Filename to store
-            $filename = 'store_logo' . '_' . time() . '.' . $extension;
-
-            Storage::disk('public')->putFileAs($destination_path, $imageFile, $filename);
-
-            /** ຍ້າຍໄຟລ໌ເກົ່າອອກຈາກ folder */
-            if (isset($editStore->logo)) {
-                $file_path = 'images/Store/Logo/' . $editStore->logo;
-                if (Storage::disk('public')->exists($file_path)) {
-                    Storage::disk('public')->delete($file_path);
-                }
-            }
-
-            $editStore->logo = $filename;
+            (new UploadFileService())->editUploadFileStoreLogo($request, $editStore);
         }
 
         $editStore->save();

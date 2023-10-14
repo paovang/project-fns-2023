@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\User\UserController;
 
@@ -56,3 +57,5 @@ Route::group([
     Route::delete('delete-store/{id}', [StoreController::class, 'deleteStore'])->name('delete.store');
 
 });
+
+Route::post('send-email-otp', [EmailController::class, 'sendEmailOTP']);
