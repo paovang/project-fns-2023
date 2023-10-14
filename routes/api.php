@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\User\UserController;
 
 /*
@@ -48,5 +49,10 @@ Route::group([
 ], function() {
     Route::get('list-users', [UserController::class, 'listUsers'])->name('list.users');
     // Route::get('list-users', [UserController::class, 'listUsers'])->name('list.users')->middleware('permission:create-store|update-store,require_all');
+
+    Route::get('list-stores', [StoreController::class, 'listStores'])->name('list.stores');
+    Route::post('add-store', [StoreController::class, 'addStore'])->name('add.store');
+    Route::put('edit-store/{id}', [StoreController::class, 'editStore'])->name('edit.store');
+    Route::delete('delete-store/{id}', [StoreController::class, 'deleteStore'])->name('delete.store');
 
 });

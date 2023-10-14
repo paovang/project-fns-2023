@@ -1,4 +1,6 @@
 <?php
+$public_url = config('filesystems.disks.public.url');
+
 
 return [
 
@@ -31,4 +33,7 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'file_path' => [
+        'storeLogo' => "$public_url/images/Store/Logo/",
+    ],
 ];
