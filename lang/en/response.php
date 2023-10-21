@@ -2,5 +2,6 @@
 
 return [
     'success' => 'success.',
-    'error' => 'failed'
+    'error' => 'failed',
+    'test' => 'Test'
 ];
