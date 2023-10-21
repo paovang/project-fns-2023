@@ -3,5 +3,6 @@
 return [
     'success' => 'success.',
     'error' => 'failed',
-    'test' => 'Test'
+    'test' => 'Test',
+    'phoud_test' => 'Phoud Test'
 ];
