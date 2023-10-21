@@ -82,6 +82,9 @@ class StoreRequest extends FormRequest
         return [
             'name.required' => 'ກະລຸນາປ້ອນກ່ອນ.',
             'name.max' => 'ບໍ່ຄວນເກີນ 10.',
+            
+            'email.required' => __('validation.required'),
+            'email.unique' => __('validation.unique')
         ];
     }
 }

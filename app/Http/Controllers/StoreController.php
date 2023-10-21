@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\MyHelper;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\Store;
@@ -16,6 +17,17 @@ class StoreController extends Controller
     
     public function addStore(StoreRequest $request)
     {
+        $menu = [
+            'home' => __('menu.home'),
+            'product' => __('menu.product')
+        ];
+
+        return $menu;
+
+        // $discount = MyHelper::calDiscount(100000);
+
+        // return $discount;
+
         /** Service Upload File Store Logo */
         $filename = resolve(UploadFileService::class)->uploadFileStoreLogo($request); 
 
@@ -46,7 +58,7 @@ class StoreController extends Controller
         $addUser->attachRole($getRoleStoreAdmin);
 
         return response()->json([
-            'message' => 'ສຳເລັດເເລ້ວ.'
+            'message' => __('response.success')
         ]);
     }
 
@@ -99,6 +111,14 @@ class StoreController extends Controller
         $deleteStore = Store::find($request->id);
         $deleteStore->delete();
     }
+
+
+   
+
+
+
+
+
 
      // public function listStores1()
     // {

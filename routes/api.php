@@ -43,6 +43,7 @@ Route::group([
     'middleware' => [
         'auth.jwt', 
         'role:super-admin|admin',   
+        'setlocale'
         // 'permission:read-store|create-store|update-store|delete-store'                    // ຖືກອັນໃດອັນໜຶ່ງໃນນີ້
         // 'permission:read-store|create-store|update-store|delete-store,require_all'       // ຕ້ອງຖືກຕ້ອງທັງໝົດທີ່ກຳນົດໃນນີ້
     ],
@@ -59,3 +60,4 @@ Route::group([
 });
 
 Route::post('send-email-otp', [EmailController::class, 'sendEmailOTP']);
+
